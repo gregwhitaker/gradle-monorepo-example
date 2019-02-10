@@ -11,5 +11,11 @@ repositories {
 }
 
 dependencies {
-    compile 'example.gcb.gregwhitaker:project-c:0.1.0'
+    
+    // If you do not explicitly declare a version it will build
+    // the dependency and use that version. If you do declare a version,
+    // and that version exists in one of the repositories it will be used,
+    // otherwise the dependent project will be built and that version will
+    // be used.
+    implementation 'example.gcb.gregwhitaker:project-c'
 }
