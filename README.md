@@ -144,6 +144,13 @@ Run the following commands to build [project-d](project-d):
         
         BUILD SUCCESSFUL in 0s
         
+## Working in IntelliJ
+IntelliJ supports Gradle Composite Builds and will automatically open any included builds for a project.
+
+To see this in action, open [project-a](project-a) in your IntelliJ IDE:
+
+
+        
 ## License
 MIT License
 
