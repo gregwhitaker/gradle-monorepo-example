@@ -9,6 +9,10 @@ version = '0.1.0'
 
 mainClassName = 'example.projecta.Main'
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    compile 'com.github.gregwhitaker:project-b:0.1.0'
+    compile 'example.gcb.gregwhitaker:project-b:0.1.0'
 }

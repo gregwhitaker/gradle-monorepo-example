@@ -9,6 +9,10 @@ version = '0.1.0'
 
 mainClassName = 'example.projectd.Main'
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
 
 }

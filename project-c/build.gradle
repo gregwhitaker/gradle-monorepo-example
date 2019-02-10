@@ -6,6 +6,10 @@ sourceCompatibility = 1.8
 group = 'example.gcb.gregwhitaker'
 version = '0.1.0'
 
-dependencies {
+repositories {
+    mavenCentral()
+}
 
+dependencies {
+    
 }
