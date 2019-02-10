@@ -1,0 +1,27 @@
+plugins {
+    id 'com.gradle.build-scan' version '2.1'
+    id 'com.github.hierynomus.license' version '0.14.0'
+    id 'net.saliman.properties' version '1.4.6'
+}
+
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
+    publishOnFailure()
+}
+
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'com.github.hierynomus.license'
+    apply plugin: 'net.saliman.properties'
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    license {
+        header rootProject.file('codequality/HEADER')
+        excludes([ "**/*.json", "**/*.html", "**/*.js" ])
+    }
+}

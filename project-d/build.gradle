@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+sourceCompatibility = 1.8
+mainClassName = 'example.projectd.Main'
+
+dependencies {
+
+}

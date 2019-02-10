@@ -1,0 +1,6 @@
+rootProject.name = 'gradle-compositebuild-example'
+include 'project-a'
+include 'project-b'
+include 'project-c'
+include 'project-d'
+
