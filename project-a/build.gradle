@@ -4,8 +4,11 @@ plugins {
 }
 
 sourceCompatibility = 1.8
+group = 'example.gcb.gregwhitaker'
+version = '0.1.0'
+
 mainClassName = 'example.projecta.Main'
 
 dependencies {
-
+    compile 'com.github.gregwhitaker:project-b:0.1.0'
 }
