@@ -1,4 +1,4 @@
-# gradle-compositebuild-example
+# gradle-monorepo-example
 
 An example of building projects in a monorepo using [Gradle Composite Builds](https://docs.gradle.org/current/userguide/composite_builds.html).
 
