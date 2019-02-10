@@ -11,7 +11,7 @@ Projects A, B, and C have dependencies on one another:
     
 Project D has no dependencies on the other projects:
     
-    project-d
+    [project-d]
 
 ## Running the Example
 TODO
