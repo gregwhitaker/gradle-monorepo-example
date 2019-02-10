@@ -12,4 +12,7 @@ Run the following command to start the application:
 
     ./gradlew run
     
-If successful, you will see `FooBar` printed in the console.
+If successful, you will see the following in the console:
+
+    > Task :run
+    FooBar
