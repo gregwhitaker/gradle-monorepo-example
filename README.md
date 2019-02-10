@@ -2,6 +2,17 @@
 
 An example of building projects in a monorepo using [Gradle Composite Builds](https://docs.gradle.org/current/userguide/composite_builds.html).
 
+## Repository Structure
+The repository contains four projects each with their own Gradle configurations.
+
+Projects A, B, and C have dependencies on one another:
+
+    project-a -- DEPENDS --> project-b -- DEPENDS --> project-c
+    
+Project D has no dependencies on the other projects:
+    
+    project-d
+
 ## Running the Example
 TODO
 
