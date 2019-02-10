@@ -147,8 +147,10 @@ Run the following commands to build [project-d](project-d):
 ## Working in IntelliJ
 IntelliJ supports Gradle Composite Builds and will automatically open any included builds for a project.
 
-To see this in action, open [project-a](project-a) in your IntelliJ IDE:
+To see this in action, open [project-a](project-a) in your IntelliJ IDE. You will notice that IntelliJ automatically
+opens [project-b](project-d) because it is a dependency of the current project.
 
+![intellij](intellij_screenshot.png)
 
         
 ## License
