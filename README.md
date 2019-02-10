@@ -7,7 +7,7 @@ The repository contains four projects each with their own Gradle configurations.
 
 Projects A, B, and C have dependencies on one another:
 
-    project-a -- DEPENDS --> project-b -- DEPENDS --> project-c
+    [project-a] -- DEPENDS --> [project-b] -- DEPENDS --> [project-c]
     
 Project D has no dependencies on the other projects:
     
