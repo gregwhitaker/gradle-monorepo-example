@@ -108,6 +108,42 @@ Run the following commands to build [project-a](project-a):
 
         BUILD SUCCESSFUL in 0s
 
+### Build Project D
+Run the following commands to build [project-d](project-d):
+
+1. Change the working directory to [project-d](project-d):
+
+        cd project-d
+        
+2. Run the following command to generate classes for the project:
+
+        ./gradlew classes --info
+        
+    Notice that only [project-d](project-d) was configured and built:
+        
+        > Configure project :
+        Evaluating root project 'project-d' using build file '/Users/greg/workspace/gradle-compositebuild-example/project-d/build.gradle'.
+        All projects evaluated.
+        Selected primary task 'classes' from project :
+        Tasks to be executed: [task ':compileJava', task ':processResources', task ':classes']
+        :compileJava (Thread[Task worker for ':',5,main]) started.
+        
+        > Task :compileJava UP-TO-DATE
+        Skipping task ':compileJava' as it is up-to-date.
+        :compileJava (Thread[Task worker for ':',5,main]) completed. Took 0.006 secs.
+        :processResources (Thread[Task worker for ':',5,main]) started.
+        
+        > Task :processResources NO-SOURCE
+        Skipping task ':processResources' as it has no source files and no previous output files.
+        :processResources (Thread[Task worker for ':',5,main]) completed. Took 0.0 secs.
+        :classes (Thread[Task worker for ':',5,main]) started.
+        
+        > Task :classes UP-TO-DATE
+        Skipping task ':classes' as it has no actions.
+        :classes (Thread[Task worker for ':',5,main]) completed. Took 0.0 secs.
+        
+        BUILD SUCCESSFUL in 0s
+        
 ## License
 MIT License
 
