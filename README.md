@@ -152,7 +152,9 @@ opens [project-b](project-d) because it is a dependency of the current project.
 
 ![intellij](intellij_screenshot.png)
 
-        
+## Bugs and Feedback
+For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/gradle-monorepo-example/issues).
+
 ## License
 MIT License
 
