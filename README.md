@@ -28,7 +28,7 @@ Run the following commands to build [project-a](project-a):
         ./gradlew classes --info
         
     Notice in the command output that [project-b](project-b) and [project-c](project-c) was also configured and built, 
-    but [project-d](project-d) was neither configured or built:
+    but [project-d](project-d) was neither configured nor built:
 
         > Configure project :project-b
         Evaluating project ':project-b' using build file '/Users/greg/workspace/gradle-compositebuild-example/project-b/build.gradle'.
