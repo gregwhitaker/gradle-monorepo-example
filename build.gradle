@@ -1,0 +1,98 @@
+group parent.group
+version parent.version
+
+jar {
+    archiveBaseName = 'metadata-api'
+    version = project.version
+    enabled = false
+    manifest {
+        attributes("Implementation-Version": project.getVersion()+ '.' + System.getenv("BUILD_NUMBER")
+        + '.' + System.getenv("GIT_COMMIT"))
+    }
+}
+
+buildscript {
+    ext {
+        springBootVersion = this.project.properties["spring.boot.version"]
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'com.bmuschko:gradle-docker-plugin:6.7.0'
+    }
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.bmuschko.docker-remote-api'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'jacoco'
+
+springBoot {
+    mainClass = "io.metadata.MetadataApiApplication"
+}
+
+bootRun {
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
+    }
+}
+
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+task buildDocker(type: DockerBuildImage, dependsOn: build) {
+    inputDir = file('.')
+    images.add("${project.name}")
+}
+
+dependencies {
+    implementation project(':metadata-commons')
+    implementation project(':metadata-provider-api')
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        exclude module: 'spring-boot-starter-tomcat'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-jetty'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.social:spring-social-facebook:2.0.3.RELEASE'
+
+    implementation 'org.apache.commons:commons-math3:3.6.1'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:1.0.2'
+    implementation 'net.sourceforge.csvjdbc:csvjdbc:1.0.40'
+    implementation 'org.jsoup:jsoup:1.15.3'
+    implementation 'org.thymeleaf:thymeleaf:3.0.15.RELEASE'
+    annotationProcessor('org.mapstruct:mapstruct-processor:1.4.2.Final')
+    implementation('org.owasp.esapi:esapi:2.2.3.1') {
+        exclude group: 'log4j'
+    }
+    implementation 'org.owasp.antisamy:antisamy:1.7.1'
+    implementation 'org.passay:passay:1.6.2'
+    implementation 'org.jcodec:jcodec:0.2.5'
+    implementation 'org.jcodec:jcodec-javase:0.2.5'
+    implementation 'net.sourceforge.csvjdbc:csvjdbc:1.0.37'
+    implementation 'commons-validator:commons-validator:1.7'
+    implementation 'net.coobird:thumbnailator:0.4.18'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.security:spring-security-oauth2-jose'
+    implementation 'org.springframework.security:spring-security-oauth2-resource-server'
+    implementation 'com.auth0:auth0:1.43.0'
+
+    testImplementation  'junit:junit:4.13.2'
+    testImplementation project(path: ':metadata-commons', configuration: 'testArchives')
+    testImplementation "org.springframework.security:spring-security-test:${this.project.properties["spring.security.version"]}"
+}
+
+test {
+    jvmArgs "-Dio.netty.allocator.numHeapArenas=0 -Dio.netty.allocator.type=unpooled"
+    maxHeapSize = "2g"
+    useJUnit()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
